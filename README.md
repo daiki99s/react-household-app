@@ -36,10 +36,6 @@
 -   Tailwind CSS
 -   React Router
 
-## スクリーンショット
-
-（例: public/screenshot-home.png, public/screenshot-report.png などを追加してください）
-
 ## ライセンス
 
 MIT License
