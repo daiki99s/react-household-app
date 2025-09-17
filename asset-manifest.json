@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-household-app/static/css/main.0a1397cc.css",
-    "main.js": "/react-household-app/static/js/main.7c5bbde5.js",
+    "main.js": "/react-household-app/static/js/main.323c64b3.js",
     "index.html": "/react-household-app/index.html",
     "main.0a1397cc.css.map": "/react-household-app/static/css/main.0a1397cc.css.map",
-    "main.7c5bbde5.js.map": "/react-household-app/static/js/main.7c5bbde5.js.map"
+    "main.323c64b3.js.map": "/react-household-app/static/js/main.323c64b3.js.map"
   },
   "entrypoints": [
     "static/css/main.0a1397cc.css",
-    "static/js/main.7c5bbde5.js"
+    "static/js/main.323c64b3.js"
   ]
 }
