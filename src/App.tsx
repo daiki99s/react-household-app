@@ -3,13 +3,13 @@ import { RecordsProvider } from "./context/RecordsContext";
 import AppLayout from "./components/layout/AppLayout";
 import Home from "./pages/Home";
 import Report from "./pages/Report";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NoMatch from "./pages/NoMatch";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 function App() {
     return (
         <RecordsProvider>
-            <BrowserRouter>
+            <HashRouter>
                 <Routes>
                     <Route path="/" element={<AppLayout />}>
                         <Route index element={<Home />} />
@@ -17,7 +17,7 @@ function App() {
                         <Route path="*" element={<NoMatch />} />
                     </Route>
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         </RecordsProvider>
     );
 }
