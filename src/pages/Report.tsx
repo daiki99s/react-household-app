@@ -1,12 +1,13 @@
 import React from "react";
 import IncomeExpenseForm from "../components/IncomeExpenseForm";
 import { useRecords } from "../context/RecordsContext";
+import { Record } from "../context/RecordsContext";
 import { Typography, Paper, Card, CardContent, Chip, Box } from "@mui/material";
 import { AddCircle, RemoveCircle } from "@mui/icons-material";
 import EditRecordDialog, { EditRecord } from "../components/EditRecordDialog";
 
 const Report = () => {
-    const { records, addRecord, editRecord } = useRecords();
+    const { records, addRecord, editRecord, deleteRecord } = useRecords();
     const [editOpen, setEditOpen] = React.useState(false);
     const [editIndex, setEditIndex] = React.useState<number | null>(null);
     const [editData, setEditData] = React.useState<EditRecord | null>(null);
@@ -23,6 +24,15 @@ const Report = () => {
             // 逆順なので元のindexに変換
             const originalIndex = records.length - 1 - editIndex;
             editRecord(originalIndex, data);
+        }
+        setEditOpen(false);
+    };
+
+    // 削除処理
+    const handleEditDelete = () => {
+        if (editIndex !== null) {
+            const originalIndex = records.length - 1 - editIndex;
+            deleteRecord(originalIndex);
         }
         setEditOpen(false);
     };
@@ -98,6 +108,7 @@ const Report = () => {
                 record={editData}
                 onClose={() => setEditOpen(false)}
                 onSave={handleEditSave}
+                onDelete={handleEditDelete}
             />
         </div>
     );

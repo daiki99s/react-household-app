@@ -1,11 +1,12 @@
 import React, { useMemo, useState } from "react";
 import { useRecords } from "../context/RecordsContext";
+import { Record } from "../context/RecordsContext";
 import EditRecordDialog from "../components/EditRecordDialog";
 import { Card, CardContent, Typography, Box, Chip } from "@mui/material";
 import { AttachMoney, RemoveCircle, AddCircle } from "@mui/icons-material";
 
 const Home = () => {
-    const { records, editRecord } = useRecords();
+    const { records, editRecord, deleteRecord } = useRecords();
     const [editOpen, setEditOpen] = useState(false);
     const [editIndex, setEditIndex] = useState<number | null>(null);
     const [editRecordData, setEditRecordData] = useState(null);
@@ -36,6 +37,14 @@ const Home = () => {
     const handleEditSave = (newRecord: any) => {
         if (editIndex !== null) {
             editRecord(editIndex, newRecord);
+        }
+        setEditOpen(false);
+    };
+
+    // 削除処理
+    const handleEditDelete = () => {
+        if (editIndex !== null) {
+            deleteRecord(editIndex);
         }
         setEditOpen(false);
     };
@@ -156,6 +165,7 @@ const Home = () => {
                 record={editRecordData}
                 onClose={() => setEditOpen(false)}
                 onSave={handleEditSave}
+                onDelete={handleEditDelete}
             />
         </div>
     );

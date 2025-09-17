@@ -11,6 +11,7 @@ type RecordsContextType = {
     records: Record[];
     addRecord: (record: Record) => void;
     editRecord: (index: number, record: Record) => void;
+    deleteRecord: (index: number) => void;
 };
 
 const RecordsContext = createContext<RecordsContextType | undefined>(undefined);
@@ -20,7 +21,9 @@ export const RecordsProvider = ({ children }: { children: React.ReactNode }) => 
     const addRecord = (record: Record) => setRecords((prev) => [...prev, record]);
     const editRecord = (index: number, record: Record) =>
         setRecords((prev) => prev.map((r, i) => (i === index ? record : r)));
-    return <RecordsContext.Provider value={{ records, addRecord, editRecord }}>{children}</RecordsContext.Provider>;
+    const deleteRecord = (index: number) =>
+        setRecords((prev) => prev.filter((_, i) => i !== index));
+    return <RecordsContext.Provider value={{ records, addRecord, editRecord, deleteRecord }}>{children}</RecordsContext.Provider>;
 };
 
 export const useRecords = () => {
